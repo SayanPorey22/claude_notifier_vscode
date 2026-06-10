@@ -1,5 +1,5 @@
 {
-  "name": "claude-code-notifier",
+  "name": "claude-code-sound-notifier",
   "displayName": "Claude Code Notifier",
   "description": "Plays a sound whenever Claude Code needs your attention (permission requests, idle prompts, task completion).",
   "version": "0.1.0",
