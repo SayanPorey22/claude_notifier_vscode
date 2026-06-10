@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2
+
+- Optimized the icon (256x256) to shrink the package size.
+
 ## 0.1.1
 
 - Updated the extension icon.
