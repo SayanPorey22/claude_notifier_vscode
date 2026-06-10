@@ -9,6 +9,14 @@
     "name": "Sayan Porey"
   },
   "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SayanPorey22/claude_notifier_vscode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SayanPorey22/claude_notifier_vscode/issues"
+  },
+  "homepage": "https://github.com/SayanPorey22/claude_notifier_vscode#readme",
   "engines": {
     "vscode": "^1.85.0"
   },
