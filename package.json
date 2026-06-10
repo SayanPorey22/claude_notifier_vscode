@@ -3,7 +3,7 @@
   "displayName": "Claude Code Notifier",
   "description": "Plays a sound whenever Claude Code needs your attention (permission requests, idle prompts, task completion).",
   "version": "0.1.0",
-  "publisher": "your-publisher-id",
+  "publisher": "SayanPorey",
   "license": "MIT",
   "author": {
     "name": "Sayan Porey"
