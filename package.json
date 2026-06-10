@@ -1,0 +1,133 @@
+{
+  "name": "claude-code-notifier",
+  "displayName": "Claude Code Notifier",
+  "description": "Plays a sound whenever Claude Code needs your attention (permission requests, idle prompts, task completion).",
+  "version": "0.1.0",
+  "publisher": "your-publisher-id",
+  "license": "MIT",
+  "author": {
+    "name": "Sayan Porey"
+  },
+  "icon": "media/icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Notifications",
+    "Other"
+  ],
+  "keywords": [
+    "claude",
+    "claude code",
+    "notification",
+    "sound",
+    "alert",
+    "hooks"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "claudeCodeNotifier.installHooks",
+        "title": "Claude Code Notifier: Install Claude Code Hooks"
+      },
+      {
+        "command": "claudeCodeNotifier.uninstallHooks",
+        "title": "Claude Code Notifier: Remove Claude Code Hooks"
+      },
+      {
+        "command": "claudeCodeNotifier.testSound",
+        "title": "Claude Code Notifier: Play a Test Sound"
+      },
+      {
+        "command": "claudeCodeNotifier.toggleEnabled",
+        "title": "Claude Code Notifier: Toggle Notifications On/Off"
+      },
+      {
+        "command": "claudeCodeNotifier.openSoundsFolder",
+        "title": "Claude Code Notifier: Open Sounds Folder"
+      }
+    ],
+    "configuration": {
+      "title": "Claude Code Notifier",
+      "properties": {
+        "claudeCodeNotifier.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable sound notifications."
+        },
+        "claudeCodeNotifier.showToast": {
+          "type": "boolean",
+          "default": true,
+          "description": "Also show a VS Code notification toast alongside the sound."
+        },
+        "claudeCodeNotifier.workspaceScope": {
+          "type": "string",
+          "enum": [
+            "matching",
+            "always"
+          ],
+          "enumDescriptions": [
+            "Only play a sound when the event's working directory matches this window's workspace (avoids duplicate sounds across multiple open windows).",
+            "Play a sound in every open window for every event."
+          ],
+          "default": "matching",
+          "description": "Controls which VS Code window plays the sound when multiple windows are open."
+        },
+        "claudeCodeNotifier.sounds.permission": {
+          "type": "string",
+          "default": "permission.wav",
+          "description": "Sound file for permission requests. A bare filename resolves to the bundled 'sounds' folder; an absolute path is used as-is."
+        },
+        "claudeCodeNotifier.sounds.idle": {
+          "type": "string",
+          "default": "idle.wav",
+          "description": "Sound file for idle prompts (Claude is waiting for input)."
+        },
+        "claudeCodeNotifier.sounds.stop": {
+          "type": "string",
+          "default": "stop.wav",
+          "description": "Sound file played when Claude finishes responding."
+        },
+        "claudeCodeNotifier.sounds.generic": {
+          "type": "string",
+          "default": "notification.wav",
+          "description": "Fallback sound for any other notification type."
+        },
+        "claudeCodeNotifier.playStopSound": {
+          "type": "boolean",
+          "default": true,
+          "description": "Play a sound when Claude finishes responding (the Stop hook fires on every turn, so this can be frequent)."
+        },
+        "claudeCodeNotifier.customPlayerCommand": {
+          "type": "string",
+          "default": "",
+          "description": "Optional. Override the OS audio player. Use {file} as a placeholder for the sound path, e.g. 'ffplay -nodisp -autoexit {file}'. Leave empty to auto-detect."
+        },
+        "claudeCodeNotifier.hookScope": {
+          "type": "string",
+          "enum": [
+            "user",
+            "project"
+          ],
+          "default": "user",
+          "description": "Where to install hooks: 'user' (~/.claude/settings.json, applies everywhere) or 'project' (./.claude/settings.json in the current workspace)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  }
+}
