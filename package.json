@@ -1,6 +1,6 @@
 {
   "name": "claude-code-sound-notifier",
-  "displayName": "Claude Code Notifier",
+  "displayName": "Claude Code Sound Alerts",
   "description": "Plays a sound whenever Claude Code needs your attention (permission requests, idle prompts, task completion).",
   "version": "0.1.0",
   "publisher": "SayanPorey",
